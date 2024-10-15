@@ -18,7 +18,7 @@ const AboutUs = () => {
               At CareConnect, we are dedicated to providing exceptional healthcare services with compassion and innovation. Our mission is to improve the health and well-being of our community through personalized care, cutting-edge technology, and a patient-centered approach.
             </p>
           </div>
-          <div className="md:w-1/2 flex justify-center">
+          <div className="flex justify-center md:w-1/2">
             <img src="/assets/images/doctor.png" alt="Mission" width={500} height={500} />
           </div>
         </div>
@@ -34,7 +34,7 @@ const AboutUs = () => {
               <li>Compassion and Empathy</li>
             </ul>
           </div>
-          <div className="md:w-1/2 flex justify-center">
+          <div className="flex justify-center md:w-1/2">
             <img src="/assets/images/values.png" alt="Mission" width={500} height={500} />
           </div>
         </div>

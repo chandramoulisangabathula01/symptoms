@@ -1,12 +1,15 @@
+/* eslint-disable tailwindcss/no-custom-classname */
+/* eslint-disable camelcase */
 import React, { Component } from "react";
-//data
-import { Symptoms } from "../../data/Symptoms";
-import { Diseases } from "../../data/Diseases";
-//component
 
-//CSS
+// data
+import { Diseases } from "../../data/Diseases";
+import { Symptoms } from "../../data/Symptoms";
+// component
+
+// CSS
 import "./Symptom.css";
-//icon
+// icon
 
 // import SettingsBackupRestoreIcon from "@material-ui/icons/SettingsBackupRestore";
 
@@ -19,25 +22,27 @@ class Symptom extends Component {
     dropdown_style: "dropdown-menu-on",
     searched: "",
   };
-  //data
+
+  // data
   disease_symptoms = Diseases;
 
-  //Adds Symptoms to the UserSymptom state array
+  // Adds Symptoms to the UserSymptom state array
 
   addSymptomButtonEvent = (e) => {
     if (!this.state.user_symptoms.includes(e.target.value)) {
-      let user_symptoms = [...this.state.user_symptoms, e.target.value];
-      return this.setState({ user_symptoms: user_symptoms }, () => {
+      const user_symptoms = [...this.state.user_symptoms, e.target.value];
+      return this.setState({ user_symptoms }, () => {
         this.get_possible_disease();
       });
     }
   };
-  //Deletes Symptoms to the UserSymptom state array
+
+  // Deletes Symptoms to the UserSymptom state array
   deleteSymptomButtonEvent = (e) => {
     if (this.state.user_symptoms.includes(e.target.value)) {
       let user_symptoms = [...this.state.user_symptoms];
       user_symptoms = user_symptoms.filter((s) => s !== e.target.value);
-      this.setState({ user_symptoms: user_symptoms }, () => {
+      this.setState({ user_symptoms }, () => {
         this.get_possible_disease();
       });
     }
@@ -45,7 +50,7 @@ class Symptom extends Component {
 
   // get the possible disease with possibility and its name
   get_possible_disease = () => {
-    let possible_disease_function = (arr1, arr2) => {
+    const possible_disease_function = (arr1, arr2) => {
       let empty_array = [];
       for (let i = 0; i < arr1.length; i++) {
         for (let n = 0; n < arr2.length; n++) {
@@ -58,11 +63,11 @@ class Symptom extends Component {
     };
     let all_objects = [];
     Object.keys(this.disease_symptoms).map((key) => {
-      let array1 = [...this.disease_symptoms[key]];
-      let array2 = [...this.state.user_symptoms];
-      let empty_array = possible_disease_function(array1, array2);
-      let possbility = ((empty_array.length / array1.length) * 100).toFixed(2);
-      let object = {
+      const array1 = [...this.disease_symptoms[key]];
+      const array2 = [...this.state.user_symptoms];
+      const empty_array = possible_disease_function(array1, array2);
+      const possbility = ((empty_array.length / array1.length) * 100).toFixed(2);
+      const object = {
         name: key,
         possibility: possbility,
         disease_symptom: this.disease_symptoms[key],
@@ -75,14 +80,14 @@ class Symptom extends Component {
     });
   };
 
-  /*Button Events*/
+  /* Button Events */
 
-  //Set the state "Searched" according to the input
+  // Set the state "Searched" according to the input
   getInputSymptoms = (e) => {
     return this.setState({ searched: e.target.value });
   };
 
-  //Set the symptom component
+  // Set the symptom component
 
   on_click_reset_button = () => {
     return this.setState(
@@ -182,7 +187,7 @@ class Symptom extends Component {
             ))}
           </ul>
         </div>
-        <div className="col-12 width-full display-flex flex-row flex-justify-start resetButton padding-left-2">
+        <div className="col-12 width-full display-flex flex-justify-start resetButton padding-left-2 flex-row">
           <button onClick={this.on_click_reset_button} className="usa-button usa-button--secondary">
             Reset
           </button>
