@@ -92,6 +92,7 @@
 
 /* eslint-disable camelcase */
 /* eslint-disable tailwindcss/no-custom-classname */
+"use client"
 import React, { Component } from "react";
 import "./Disease.css";
 import html2pdf from "html2pdf.js"; // Import html2pdf

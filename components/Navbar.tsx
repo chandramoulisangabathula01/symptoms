@@ -4,28 +4,11 @@
 import Link from "next/link";
 import React from "react";
 
-// import DHIlab from "./DHIlab/DHIlab";
+
 
 const Navbar = () => {
 
   return (
-    // <div id="Navbar">
-    //   <div class="usa-overlay"></div>
-    //   <header class="usa-header usa-header--basic usa-header--megamenu padding-bottom-4 padding-top-6">
-    //     <div class="usa-nav-container">
-    //       <div class="usa-navbar">
-    //         <div class="usa-logo margin-0" id="basic-mega-logo">
-    //           <em class="usa-logo__text">
-    //             <div className="display-flex align-items-center flex-row">
-    //               <DHIlab />
-    //               <h3 className="display-inline-block padding-left-1">Symptom Checker</h3>
-    //             </div>
-    //           </em>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </header>
-    // </div>
     <nav className="bg-green-500 p-4">
         <div className="container mx-auto flex items-center justify-between">
           <div className="flex items-center">
