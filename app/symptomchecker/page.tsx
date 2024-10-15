@@ -1,9 +1,10 @@
-"use client"
 /* eslint-disable react/jsx-no-undef */
+"use client"
 import React from 'react'
 
 import HomePage from "@/components/HomePage";
 import Navbar from '@/components/Navbar';
+
 export default function Page() {
   return (
     <div className="h-auto  bg-white">
