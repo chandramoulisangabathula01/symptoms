@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
-
+"use client"
 // import Link from "next/link";
 // import React, { Component } from "react";
 
