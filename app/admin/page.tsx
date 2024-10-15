@@ -88,53 +88,63 @@ import { DataTable } from "@/components/table/DataTable";
 import { getRecentAppointmentList } from "@/lib/actions/appointment.actions";
 
 const AdminPage = async () => {
-  const appointments = await getRecentAppointmentList();
+  let scheduledCount = 0;
+  let pendingCount = 0;
+  let cancelledCount = 0;
+  let documents = [];
+
+  try {
+    const appointments = await getRecentAppointmentList();
+
+    // Using optional chaining to prevent TypeErrors
+    if (appointments) {
+      scheduledCount = appointments.scheduledCount || 0;
+      pendingCount = appointments.pendingCount || 0;
+      cancelledCount = appointments.cancelledCount || 0;
+      documents = appointments.documents || [];
+    }
+  } catch (error) {
+    console.error("Error fetching appointments:", error);
+  }
 
   return (
     <>
-    <Navbar />
-    <div className="mx-auto flex max-w-7xl flex-col space-y-14">
-      <header className="admin-header">
-        
+      <Navbar />
+      <div className="mx-auto flex max-w-7xl flex-col space-y-14">
+        <main className="admin-main">
+          <section className="w-full space-y-4">
+            <h1 className="header mt-10 text-white">Welcome 👋</h1>
+            <p className="text-white">Start the day with managing new appointments</p>
+          </section>
 
-        <p className="text-16-semibold">Admin Dashboard</p>
-      </header>
+          <section className="admin-stat">
+            <StatCard
+              type="appointments"
+              count={scheduledCount}
+              label="Scheduled appointments"
+              icon={"/assets/icons/appointments.svg"}
+            />
+            <StatCard
+              type="pending"
+              count={pendingCount}
+              label="Pending appointments"
+              icon={"/assets/icons/pending.svg"}
+            />
+            <StatCard
+              type="cancelled"
+              count={cancelledCount}
+              label="Cancelled appointments"
+              icon={"/assets/icons/cancelled.svg"}
+            />
+          </section>
 
-      <main className="admin-main">
-        <section className="w-full space-y-4">
-          <h1 className="header">Welcome 👋</h1>
-          <p className="text-dark-700">
-            Start the day with managing new appointments
-          </p>
-        </section>
-
-        <section className="admin-stat">
-          <StatCard
-            type="appointments"
-            count={appointments.scheduledCount}
-            label="Scheduled appointments"
-            icon={"/assets/icons/appointments.svg"}
-          />
-          <StatCard
-            type="pending"
-            count={appointments.pendingCount}
-            label="Pending appointments"
-            icon={"/assets/icons/pending.svg"}
-          />
-          <StatCard
-            type="cancelled"
-            count={appointments.cancelledCount}
-            label="Cancelled appointments"
-            icon={"/assets/icons/cancelled.svg"}
-          />
-        </section>
-
-        <DataTable columns={columns} data={appointments.documents} />
-      </main>
-    </div>
+          <DataTable columns={columns} data={documents} />
+        </main>
+      </div>
     </>
   );
 };
+
 
 export default AdminPage;
 // const AdminPage = async () => {
