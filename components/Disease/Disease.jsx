@@ -1,8 +1,8 @@
 
 /* eslint-disable camelcase */
 /* eslint-disable tailwindcss/no-custom-classname */
-import React, { Component } from "react";
 import html2pdf from "html2pdf.js"; // Import html2pdf
+import React, { Component } from "react";
 import "./Disease.css";
 
 class Disease extends Component {
