@@ -1,3 +1,5 @@
+"use server"
+
 import Navbar from "@/components/Navbar";
 import { StatCard } from "@/components/StatCard";
 import { columns } from "@/components/table/columns";
