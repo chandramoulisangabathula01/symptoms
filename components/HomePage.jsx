@@ -209,7 +209,7 @@ class HomePage extends Component {
     return (  
       <>
         {/* <Navbar /> */}
-        
+
         <div className="flex h-screen max-h-screen">
         
           <main id="main-content" className="container mx-auto py-6">
