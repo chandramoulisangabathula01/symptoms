@@ -37,6 +37,11 @@ class Disease extends Component {
     );
     return filtered_list.length !== 0 ? (
       <div className="grid-row width-full DiseaseComponent">
+        <div className="mb-4  flex items-center justify-between">
+          <button className="rounded-md bg-green-500 px-4 py-2 text-white hover:bg-red-500" onClick={this.generatePDF}>
+            Download Report as PDF
+          </button>
+        </div>
         {/* Wrap the desired content in a div with id="pdfContent" */}
         <div id="pdfContent">
           <div className="col-12 tablet:grid-col-12 patientInfo">
@@ -119,7 +124,6 @@ class Disease extends Component {
     return (
       <React.Fragment>
         {this.get_current_html()}
-        <button className="rounded-md bg-blue-500 px-4 py-2 text-white" onClick={this.generatePDF}>Download Report as PDF</button> {/* Button to download PDF */}
       </React.Fragment>
     );
   }

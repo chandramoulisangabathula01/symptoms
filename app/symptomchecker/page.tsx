@@ -3,7 +3,7 @@
 import React from 'react'
 // import HomePage from "@/components/HomePage";
 
-// import HomePage from '@/components/HomePage';
+import HomePage from '@/components/HomePage';
 import Navbar from '@/components/Navbar';
 
 export default function Page() {
@@ -11,7 +11,7 @@ export default function Page() {
     <div className="h-auto  bg-white">
       <Navbar />
       <div className="container mx-auto py-6">
-        {/* <HomePage /> */}
+        <HomePage />
       </div>
     </div>
   );

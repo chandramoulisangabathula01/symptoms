@@ -5,6 +5,7 @@ import { ThemeProvider } from "next-themes";
 
 import Chatbot from "@/components/Chatbot";
 import { cn } from "@/lib/utils";
+// import Loadinwg from "./loading";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -38,6 +39,7 @@ export default function RootLayout({
           {children}
           <Chatbot />
         </ThemeProvider>
+        {/* <Loading /> */}
       </body>
     </html>
   );

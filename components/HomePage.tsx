@@ -35,9 +35,8 @@ interface HomePageState {
 }
 
 class HomePage extends Component<{}, HomePageState> {
+  [x: string]: any;
   private symptomPage: React.RefObject<Symptom>;
-  get_gender: any;
-  get_age_event: any;
 
   constructor(props: {}) {
     super(props);
@@ -46,11 +45,11 @@ class HomePage extends Component<{}, HomePageState> {
       tab_progress: 25,
       button_is_disabled: true,
       home_button_checked: false,
-      age: "18", 
+      age: "",
       button_name: "Next",
-      gender: "Male", 
+      gender: "Male",
       male: true,
-      female: false,
+      female: true,
       home_nav_icon: <p>1</p>,
       patient_nav_icon: <p>2</p>,
       symptom_nav_icon: <p>3</p>,
@@ -65,31 +64,41 @@ class HomePage extends Component<{}, HomePageState> {
       user_symptoms: [],
       user_symptom_length: "",
     };
+    
     this.symptomPage = React.createRef();
+
+    this.get_age_event = this.get_age_event.bind(this);
+    this.get_gender = this.get_gender.bind(this);
+    this.home_button_check_event = this.home_button_check_event.bind(this);
   }
 
-  componentDidMount(): void {
-    // Client-side logic can be placed here
+  get_age_event(e: React.ChangeEvent<HTMLInputElement>): void {
+    this.setState({ age: e.target.value });
   }
 
-  home_button_check_event = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    if (e.target.checked === true) {
-      this.setState({ button_is_disabled: false, home_button_checked: true, home_nav_value: true, patient_nav_value: true });
-    } else if (e.target.checked === false) {
-      this.setState({ button_is_disabled: true, home_button_checked: false, home_nav_value: false, patient_nav_value: false });
-    }
-  };
+  get_gender(gender: string): void {
+    this.setState({ gender });
+  }
+
+  home_button_check_event = (isChecked: boolean): void => {
+    this.setState({ 
+      home_button_checked: isChecked,
+      button_is_disabled: !isChecked
+    });
+  }
 
   get_next_page = (): void => {
     switch (this.state.current_page) {
       case "Home":
-        this.setState({
-          current_page: "Patient",
-          tab_progress: 50,
-          home_nav_value: true,
-          button_is_disabled: false,
-          home_button_checked: false,
-        });
+        if (this.state.home_button_checked) {
+          this.setState({
+            current_page: "Patient",
+            tab_progress: 50,
+            home_nav_value: true,
+            button_is_disabled: false,
+            home_button_checked: false,
+          });
+        }
         break;
       case "Patient":
         this.setState({
@@ -122,9 +131,9 @@ class HomePage extends Component<{}, HomePageState> {
           current_page: "Home",
           button_is_disabled: true,
           home_button_checked: false,
-          age: "18", 
+          age: "", 
           button_name: "Next",
-          gender: "Male", 
+          gender: "", 
           male: true,
           female: false,
           home_nav_icon: <p>1</p>,
